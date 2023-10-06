@@ -54,6 +54,17 @@ const createButton = () => {
 
 
 };
+const createButtonColors = () => {
+    createElementWithIdFunction('button', 'button-random-color', bodyTag);
+    const alleatoryBtn = document.getElementById('button-random-color');
+    alleatoryBtn.innerText = 'Cores aleatórias';
+    alleatoryBtn.style.backgroundColor = '#219C90';
+    alleatoryBtn.style.color = 'white';
+    alleatoryBtn.style.padding = '10px 20px';
+    alleatoryBtn.style.margin = '10px 20px';
+    alleatoryBtn.style.borderRadius = '20px';
+    alleatoryBtn.style.fontWeight = '900';
+};
 const boardOfPixelsCreation = () => {
     createElementWithIdFunction('section', 'pixel-board', bodyTag);
     const pixelBoard = document.getElementById('pixel-board');
@@ -70,6 +81,7 @@ const boardOfPixelsCreation = () => {
     };
 };
 createButton();
+createButtonColors();
 boardOfPixelsCreation();
 
 // Requisito 3: Crie função para selecionar a cor da paleta: uma cor por vez
@@ -111,3 +123,16 @@ clearButton.addEventListener('click', () => {
     }
 });
 
+// Requisito 6: Criar botão para gerar cores aleatorias
+
+const aleatoryButton = document.getElementById('button-random-color');
+// console.log(aleatoryButton);
+aleatoryButton.addEventListener('click', () => {
+    const colors = document.querySelectorAll('.color');
+    for (let index = 0; index < colors.length; index += 1) {
+        const randomColor1 = Math.round(Math.random() * 255);
+        const randomColor2 = Math.round(Math.random() * 255);
+        const randomColor3 = Math.round(Math.random() * 255);
+        colors[index].style.backgroundColor = `rgb(${randomColor1}, ${randomColor2}, ${randomColor3})`;
+    }
+})
