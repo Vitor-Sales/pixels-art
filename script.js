@@ -1,5 +1,4 @@
-// window.onload = () => {
-// }
+// window.onload = () => {}
 // Requisito 1: Criar titulo com id = 'title'. Conteudo: 'Paleta de Cores. Criar elemento para paleta de cores com id = 'color-palette' e cada cor individual dentro da paleta deve possuir a classe color.
 
 const bodyTag = document.getElementsByTagName('body')[0];
@@ -21,6 +20,7 @@ const pixelElemenstOfPaletteCreation = () => {
         colorDiv.className = 'color';
         colorDiv.style.backgroundColor = colors[index];
         colorDiv.style.border = '1px solid black';
+        colorDiv.style.borderRadius = '40px';
         colorDiv.style.display = 'inline-block';
         colorDiv.style.width = '80px';
         colorDiv.style.height = '80px';
@@ -72,4 +72,30 @@ for (let index = 0; index < 4; index += 1) {
     let divColor = document.querySelectorAll('.color')[index];
     divColor.addEventListener('click', colorSelection);
     
-}
+};
+
+// Requisito 4: o pixel clicado deve ter a cor trocada de acordo com a paleta de cores
+// const paintPixel = () => {
+//     // capturar a cor do selecionado
+//     const selected = document.querySelector('.selected');
+//     const selectedColor = selected.style.color;
+//     // entregar a cor para o pixel clicado
+//     return selectedColor;
+// };
+// const pixel = document.querySelector('.pixel');
+
+// pixel.addEventListener('click', (event) => {
+//      // capturar a cor do selecionado
+//      const selected = document.querySelector('.selected');
+//      const selectedColor = 'red'; 
+//      // entregar a cor para o pixel clicado
+//      event.target.style.color = selectedColor;
+// });
+
+const pixelBoard = document.getElementById('pixel-board');
+
+pixelBoard.addEventListener('click', (event) => {
+    let selectedColor = document.querySelector('.selected').style.backgroundColor;
+    event.target.style.backgroundColor = selectedColor;
+})
+
