@@ -40,6 +40,20 @@ const createElementWithClassFunction = (element, classe, parent) => {
     parent.appendChild(thisElement);
 };
 // Requisito 2
+const createButton = () => {
+    createElementWithIdFunction('button', 'clear-board', bodyTag);
+    const clearBtn = document.getElementById('clear-board');
+    clearBtn.innerText = 'Limpar';
+    clearBtn.style.backgroundColor = 'black';
+    clearBtn.style.color = 'white';
+    clearBtn.style.padding = '10px 20px';
+    clearBtn.style.margin = '10px 20px';
+    clearBtn.style.borderRadius = '20px';
+    clearBtn.style.fontWeight = '900';
+
+
+
+};
 const boardOfPixelsCreation = () => {
     createElementWithIdFunction('section', 'pixel-board', bodyTag);
     const pixelBoard = document.getElementById('pixel-board');
@@ -55,6 +69,7 @@ const boardOfPixelsCreation = () => {
         pixel.style.backgroundColor = 'white';
     };
 };
+createButton();
 boardOfPixelsCreation();
 
 // Requisito 3: Crie função para selecionar a cor da paleta: uma cor por vez
@@ -75,27 +90,24 @@ for (let index = 0; index < 4; index += 1) {
 };
 
 // Requisito 4: o pixel clicado deve ter a cor trocada de acordo com a paleta de cores
-// const paintPixel = () => {
-//     // capturar a cor do selecionado
-//     const selected = document.querySelector('.selected');
-//     const selectedColor = selected.style.color;
-//     // entregar a cor para o pixel clicado
-//     return selectedColor;
-// };
-// const pixel = document.querySelector('.pixel');
-
-// pixel.addEventListener('click', (event) => {
-//      // capturar a cor do selecionado
-//      const selected = document.querySelector('.selected');
-//      const selectedColor = 'red'; 
-//      // entregar a cor para o pixel clicado
-//      event.target.style.color = selectedColor;
-// });
-
 const pixelBoard = document.getElementById('pixel-board');
 
 pixelBoard.addEventListener('click', (event) => {
     let selectedColor = document.querySelector('.selected').style.backgroundColor;
     event.target.style.backgroundColor = selectedColor;
-})
+});
+
+// Requisito 5: Criar butao que pinta todos os pixel de branco.
+
+
+
+
+const clearButton = document.getElementById('clear-board');
+// console.log(clearButton);
+clearButton.addEventListener('click', () => {
+    const pixel = document.querySelectorAll('.pixel');
+    for (let index = 0; index < pixel.length; index += 1) {
+        pixel[index].style.backgroundColor = 'white';
+    }
+});
 
