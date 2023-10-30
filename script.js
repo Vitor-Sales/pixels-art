@@ -62,6 +62,23 @@ const createButtonColors = () => {
   alleatoryBtn.style.borderRadius = '20px';
   alleatoryBtn.style.fontWeight = '900';
 };
+const createInputSize = () => {
+  createElementWithIdFunction('input', 'board-size', bodyTag);
+  const inputBoardSize = document.getElementById('board-size');
+  inputBoardSize.style.padding = '5px 10px';
+  inputBoardSize.type = 'number';
+  inputBoardSize.min = '0';
+};
+const createBtnForSize = () => {
+  createElementWithIdFunction('button', 'generate-board', bodyTag);
+  const btnForSize = document.getElementById('generate-board');
+  btnForSize.innerText = 'VQV';
+  btnForSize.style.backgroundColor = '#E9B824';
+  btnForSize.style.padding = '10px 20px';
+  btnForSize.style.margin = '10px 20px';
+  btnForSize.style.borderRadius = '20px';
+  btnForSize.style.fontWeight = '900';
+};
 const boardOfPixelsCreation = () => {
   createElementWithIdFunction('section', 'pixel-board', bodyTag);
   const pixelBoard = document.getElementById('pixel-board');
@@ -80,6 +97,8 @@ const boardOfPixelsCreation = () => {
 };
 createButton();
 createButtonColors();
+createInputSize();
+createBtnForSize();
 boardOfPixelsCreation();
 
 // Requisito 3: Crie função para selecionar a cor da paleta: uma cor por vez
@@ -157,3 +176,20 @@ const getPixelBoard = () => {
 };
 
 getPixelBoard();
+
+// 8- Crie um input que permita a pessoa usuaria preencher um novo tamanho para o quadro de pixels
+
+const btnForSize = document.getElementById('generate-board');
+
+btnForSize.addEventListener('click', () => {
+  const newSize = document.getElementById('board-size').innerText;
+  if (typeof newSize !== 'number') {
+    alert('Board inválido!');
+  }
+  for (let index = 0; index < 25; index += 1) {
+    const pixel = document.querySelectorAll('.pixel')[index];
+    pixel.style.width = `${parseInt(newSize)}px`;
+    pixel.style.height = `${parseInt(newSize)}px`;
+    pixel.style.backgroundColor = 'white';
+  }
+});
