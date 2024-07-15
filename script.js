@@ -188,8 +188,8 @@ btnForSize.addEventListener('click', () => {
   }
   for (let index = 0; index < 25; index += 1) {
     const pixel = document.querySelectorAll('.pixel')[index];
-    pixel.style.width = `${parseInt(newSize)}px`;
-    pixel.style.height = `${parseInt(newSize)}px`;
+    pixel.style.width = `${Number(newSize)}px`;
+    pixel.style.height = `${Number(newSize)}px`;
     pixel.style.backgroundColor = 'white';
   }
 });
